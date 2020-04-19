@@ -1,0 +1,44 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: iris-single-job-$ITEM
+spec:
+  parallelism: 1
+  template:
+    metadata:
+      name: iris-single-job
+      labels:
+        app: iris-single-job
+    spec:
+      restartPolicy: Never
+      containers:
+       - name: alpine
+         image: frolvlad/alpine-python-machinelearning
+         workingDir: /iris-training
+         env:
+         - name: JOB_ID
+           value: "$ITEM"
+         command: ["bash"]
+         args: ["-c","python iris_train.py"]
+         #computeResourceRequests: ["nvidia-gpu"]
+         volumeMounts:
+         - name: iris-training
+           mountPath: /iris-training
+         - name: iris-dataset
+           mountPath: /mirror
+      volumes:
+      - name: iris-training
+        gitRepo:
+          repository: https://github.com/borsuk74/kubernetes-hyperparam-exp.git
+          revision: master
+          directory: .
+      - name: iris-dataset #RESULTS_DIR
+        nfs:
+          server: 172.42.42.100
+          #path: /home/sprasanna/Projects/training-datasets
+          path: /mirror
+      #computeResources:
+       #- name: "nvidia-gpu"
+         #resources:
+           #limits:
+             #nvidia.com/gpu: 1

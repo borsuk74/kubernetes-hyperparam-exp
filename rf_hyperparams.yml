@@ -1,0 +1,27 @@
+- hyperparam_set:
+    max_depth: 5
+    n_estim: 100
+- hyperparam_set:
+    max_depth: 5
+    n_estim: 200
+- hyperparam_set:
+    max_depth: 5
+    n_estim: 300
+- hyperparam_set:
+    max_depth: 8
+    n_estim: 100
+- hyperparam_set:
+    max_depth: 8
+    n_estim: 200
+- hyperparam_set:
+    max_depth: 8
+    n_estim: 300
+- hyperparam_set:
+    max_depth: 10
+    n_estim: 100
+- hyperparam_set:
+    max_depth: 10
+    n_estim: 200
+- hyperparam_set:
+    max_depth: 10
+    n_estim: 300
