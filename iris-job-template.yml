@@ -19,7 +19,7 @@ spec:
          - name: JOB_ID
            value: "$ITEM"
          command: ["sh"]
-         args: ["-c","python iris_train.py"]
+         args: ["-c","python iris_train_noyaml.py"]
          #computeResourceRequests: ["nvidia-gpu"]
          volumeMounts:
          - name: iris-training
