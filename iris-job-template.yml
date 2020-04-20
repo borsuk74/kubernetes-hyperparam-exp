@@ -18,7 +18,7 @@ spec:
          env:
          - name: JOB_ID
            value: "$ITEM"
-         command: ["bash"]
+         command: ["sh"]
          args: ["-c","python iris_train.py"]
          #computeResourceRequests: ["nvidia-gpu"]
          volumeMounts:
