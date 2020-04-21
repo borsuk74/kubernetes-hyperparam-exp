@@ -25,3 +25,20 @@ Assuming you’ve already started by setting up a Kubernetes cluster, our soluti
 6. Submit multiple Kubernetes job requests using above specification template
 7. Analyze the results and pick the hyperparameter set
 
+Adaptation of this experiment for small kubernetes cluster (without GPUs), deployed on laptop.
+The main goal is to demonstrate hyperparameter search via kubernetes jobs.
+
+0.1. Install small kubernetes cluster of VMs by following instructions here:
+    https://blog.exxactcorp.com/building-a-kubernetes-cluster-using-vagrant/
+
+0.2. Configuring NFS folders as described:
+    https://www.youtube.com/watch?v=0jQrhBplCBY
+    https://www.youtube.com/watch?v=2sr3hN-qCVU
+
+0.3. Download iris dataset:
+    wget http://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data
+    place it into /mirror folder on Kmaster node (configured as shared folder on the cluster)
+
+0.4. Run git clone for this repository in the /iris-training folder (configured as shared on the cluster)
+
+0.5. Run steps 1-6 above with ./create_jobs.sh 9
